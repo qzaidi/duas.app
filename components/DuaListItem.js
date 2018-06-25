@@ -11,12 +11,12 @@ import FadeIn from 'react-native-fade-in-image';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import { MaterialIcons } from '@expo/vector-icons';
 import Layout from '../constants/Layout';
-import { RegularText, BoldText } from './StyledText';
+import { RegularText, BoldText, ArabicText } from './StyledText';
 
 export class DuaListItem extends React.Component {
   render() {
 
-    let { icon, name } = this.props.info;
+    let { icon, name, arabic, desc } = this.props.info;
     return (
       <TouchableNativeFeedback
         delayPressIn={80}
@@ -41,12 +41,12 @@ export class DuaListItem extends React.Component {
         <View style={styles.infoContainer}>
           <RegularText style={styles.name}>{name}</RegularText>
 
-          <RegularText style={styles.hours}>
-            12:00-14:00
-          </RegularText>
+          <ArabicText style={styles.arabic}>
+            {arabic}
+          </ArabicText>
 
-          <RegularText style={styles.address}>
-            10 Downing St., London
+          <RegularText style={styles.desc}>
+            {desc}
           </RegularText>
         </View>
 
@@ -77,10 +77,10 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
   },
-  hours: {
-    fontSize: 12,
+  arabic: {
+    fontSize: 14,
   },
-  address: {
+  desc: {
     fontSize: 12,
   },
   logoContainer: {

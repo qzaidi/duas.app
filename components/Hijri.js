@@ -1,158 +1,167 @@
-  function intPart(floatNum){
-    if (floatNum< -0.0000001){
-      return Math.ceil(floatNum-0.0000001)
-    }
-    return Math.floor(floatNum+0.0000001) 
-  }
+import React	from 'react';
+import {
+	Text
+} from 'react-native';
+
+export default class HijriDate extends React.Component {
+	render() {
+		return (
+			<Text > {
+			hijri.getHijriDate()
+		} </Text >
+		);
+	}
+}
+
+function 
+intPart(floatNum)
+{
+	if (floatNum < -0.0000001) {
+		return Math.ceil(floatNum - 0.0000001)
+	}
+	return Math.floor(floatNum + 0.0000001)
+}
 
 
-  const hijri = {
-    get_nth_suffix: function (date) {
-      switch (date) {
-        case 1:
-        case 21:
-        case 31:
-          return 'st';
-        case 2:
-        case 22:
-          return 'nd';
-        case 3:
-        case 23:
-          return 'rd';
-        default:
-          return 'th';
-      }
-    },
+const		hijri = {
+	get_nth_suffix:function(date) {
+		switch (date) {
+			case 1:
+			case 21:
+			case 31:
+			return 'st';
+		case 2:
+		case 22:
+			return 'nd';
+		case 3:
+		case 23:
+			return 'rd';
+		default:
+			return 'th';
+		}
+	},
 
-    keydates : {
-    "1-1": "moharram",
-    "1-2": "karbala-arrival",
-    "2-13": "sakina",
-    "2-17": "imamreza",
-    "2-20": "arbaeen",
-    "2-24": "zainab-martyrdom",
-    "2-28": "prophet-imamhasan",
-    "3-8": "martyrdom-askari",
-    "3-9": "eid-e-zehra",
-    "3-17": "meelad-un-nabi"
-    },
+  keydates:{
+    "1-1":		"moharram",
+    "1-2":		"karbala-arrival",
+    "2-13":	"sakina",
+    "2-17":	"imamreza",
+    "2-20":	"arbaeen",
+    "2-24":	"zainab-martyrdom",
+    "2-28":	"prophet-imamhasan",
+    "3-8":		"martyrdom-askari",
+    "3-9":		"eid-e-zehra",
+    "3-17":	"meelad-un-nabi"
+	},
 
-    months : [
-      "Muharram",
-      "Safar",
-      "Rabi Al Awwal",
-      "Rabi Al Thani",
-      "Jamada Al Awwal",
-      "Jamada Al Thani",
-      "Rajab",
-      "Sha'ban",
-      "Ramadan",
-      "Shawwal",
-      "Dhul Qa'dah",
-      "Dhul Hijjah"
-    ],
+	months: [
+		"Muharram"   ,
+		"Safar"      ,
+		"Rabi Al Awwal",
+		"Rabi Al Thani",
+		"Jamada Al Awwal",
+		"Jamada Al Thani",
+		"Rajab"      ,
+		"Sha'ban"    ,
+		"Ramadan"    ,
+		"Shawwal"    ,
+		"Dhul Qa'dah",
+		"Dhul Hijjah"
+	],
 
-    getDate: function(date,month) {
-      var crdate = hijri.getGregorianDate({ day: date, month: month -1 });
-      var month = hijri.months[month - 1];
-      return date + hijri.get_nth_suffix(date) + ' of ' + month + ' , falls on ' + crdate.toString().split('00:')[0];
-    },
-
-
-    getGregorianDate: function(hijri) {
-      var d = hijri.day;
-      var m = hijri.month;
-      var y= hijri.year;
-      var cdate;
-
-      if (!y) {
-        var hrd = this.getHijriDate();
-        y = hrd.year;
-        if ((hrd.month -1) > hijri.month) y++;
-      }
-
-      var jd=intPart((11*y+3)/30)+354*y+30*m-intPart((m-1)/2)+d+1948440-385
-      if (jd> 2299160 )
-      {
-        l=jd+68569
-        n=intPart((4*l)/146097)
-        l=l-intPart((146097*n+3)/4)
-        i=intPart((4000*(l+1))/1461001)
-        l=l-intPart((1461*i)/4)+31
-        j=intPart((80*l)/2447)
-        d=l-intPart((2447*j)/80)
-        l=intPart(j/11)
-        m=j+2-12*l
-        y=100*(n-49)+i+l
-      } 
-      else  
-      {
-        j=jd+1402
-        k=intPart((j-1)/1461)
-        l=j-1461*k
-        n=intPart((l-1)/365)-intPart(l/1461)
-        i=l-365*n+30
-        j=intPart((80*i)/2447)
-        d=i-intPart((2447*j)/80)
-        i=intPart(j/11)
-        m=j+2-12*i
-        y=4*k+n+i-4716
-      }
-
-      cdate = new Date(y,m,d-1);
-      return cdate;
-      //new Date(cdate.getTime() - 3600*4);
-    },
-
-    getHijriDate: function() {
-      var months = hijri.months;
-      const days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ];
-
-      var curdate = new Date();
-      var curdate1 = new Date();
-
-      curdate1.setTime(curdate.getTime() + (3600 * 4));
-
-      hday=curdate1.getDate();
-      var _zyr=curdate1.getFullYear();
-      var _zm=curdate1.getMonth()+1;
-      _zy=_zyr;
-      zday=curdate1.getDay();
+	getDate:		function      (date, month) {
+		var		crdate = hijri.getGregorianDate({day:date, month:month - 1});
+		var		month = hijri.months[month - 1];
+		return date + hijri.get_nth_suffix(date) + ' of ' + month + ' , falls on ' + crdate.toString().split('00:')[0];
+	},
 
 
-      if ((_zy>1582)||((_zy==1582)&&(_zm>10))||((_zy==1582)&&(_zm==10)&&(hday>14)))
-      {
+  getGregorianDate:function(hijri) {
+		var		d = hijri.day;
+		var		m = hijri.month;
+		var		y = hijri.year;
+		var		cdate;
 
-        _zjd=parseInt((1461*(_zy + 4800 + parseInt( (_zm-14) /12) ))/4) + parseInt((367*(_zm-2-12*(parseInt((_zm-14)/12))))/12)-parseInt((3*parseInt(( (_zy+4900+parseInt((_zm-14)/12))/100)))/4)+hday-32075;
-      }
-      else
-      {
-        _zjd = 367*_zy-parseInt((7*(_zy+5001+parseInt((_zm-9)/7)))/4)+parseInt((275*_zm)/9)+hday+1729777;
-      }
+		if (!y) {
+			var		hrd = this.getHijriDate();
+			y = hrd.year;
+			if ((hrd.month - 1) > hijri.month)
+				y++;
+		}
+		var		jd = intPart((11 * y + 3) / 30) + 354 * y + 30 * m - intPart((m - 1) / 2) + d + 1948440 - 385
+		if (jd > 2299160) {
+			l = jd + 68569
+			n = intPart((4 * l) / 146097)
+			l = l - intPart((146097 * n + 3) / 4)
+			i = intPart((4000 * (l + 1)) / 1461001)
+			l = l - intPart((1461 * i) / 4) + 31
+			j = intPart((80 * l) / 2447)
+			d = l - intPart((2447 * j) / 80)
+			l = intPart(j / 11)
+			m = j + 2 - 12 * l
+			y = 100 * (n - 49) + i + l
+		} else {
+			j = jd + 1402
+			k = intPart((j - 1) / 1461)
+			l = j - 1461 * k
+			n = intPart((l - 1) / 365) - intPart(l / 1461)
+			i = l - 365 * n + 30
+			j = intPart((80 * i) / 2447)
+			d = i - intPart((2447 * j) / 80)
+			i = intPart(j / 11)
+			m = j + 2 - 12 * i
+			y = 4 * k + n + i - 4716
+		}
 
-      _zl=_zjd-1948440+10632;
-      _zn=parseInt((_zl-1)/10631);
-      _zl=_zl-10631*_zn+354;
-      _zj=(parseInt((10985-_zl)/5316))*(parseInt((50*_zl)/17719))+(parseInt(_zl/5670))*(parseInt((43*_zl)/15238));
-      _zl=_zl-(parseInt((30-_zj)/15))*(parseInt((17719*_zj)/50))-(parseInt(_zj/16))*(parseInt((15238*_zj)/43))+29;
-      _zm=parseInt((24*_zl)/709);
-      hday=_zl-parseInt((709*_zm)/24);
-      _zy=30*_zn+_zj-30;
+		cdate = new Date(y, m, d - 1);
+		return cdate;
+		//new Date(cdate.getTime() - 3600 * 4);
+	},
+
+  getHijriDate:	function() {
+		var		months = hijri.months;
+		const		days =[
+			      "Sunday",
+			      "Monday",
+			      "Tuesday",
+			      "Wednesday",
+			      "Thursday",
+			      "Friday",
+			      "Saturday"
+		];
+
+		var		curdate = new Date();
+		var		curdate1 = new Date();
+
+		curdate1.setTime(curdate.getTime() + (3600 * 4));
+
+		hday = curdate1.getDate();
+		var		_zyr = curdate1.getFullYear();
+		var		_zm = curdate1.getMonth() + 1;
+		_zy = _zyr;
+		zday = curdate1.getDay();
 
 
-      _bulan = months[_zm - 1];
-      _hari = days[zday];
+		if ((_zy > 1582) || ((_zy == 1582) && (_zm > 10)) || ((_zy == 1582) && (_zm == 10) && (hday > 14))) {
 
-      return hday + " " + _bulan + " " + _zy;
-    }
-  };
+			_zjd = parseInt((1461 * (_zy + 4800 + parseInt((_zm - 14) / 12))) / 4) + parseInt((367 * (_zm - 2 - 12 * (parseInt((_zm - 14) / 12)))) / 12) - parseInt((3 * parseInt(((_zy + 4900 + parseInt((_zm - 14) / 12)) / 100))) / 4) + hday - 32075;
+		} else {
+			_zjd = 367 * _zy - parseInt((7 * (_zy + 5001 + parseInt((_zm - 9) / 7))) / 4) + parseInt((275 * _zm) / 9) + hday + 1729777;
+		}
 
-export default () => hijri.getHijriDate()
+		_zl = _zjd - 1948440 + 10632;
+		_zn = parseInt((_zl - 1) / 10631);
+		_zl = _zl - 10631 * _zn + 354;
+		_zj = (parseInt((10985 - _zl) / 5316)) * (parseInt((50 * _zl) / 17719)) + (parseInt(_zl / 5670)) * (parseInt((43 * _zl) / 15238));
+		_zl = _zl - (parseInt((30 - _zj) / 15)) * (parseInt((17719 * _zj) / 50)) - (parseInt(_zj / 16)) * (parseInt((15238 * _zj) / 43)) + 29;
+		_zm = parseInt((24 * _zl) / 709);
+		hday = _zl - parseInt((709 * _zm) / 24);
+		_zy = 30 * _zn + _zj - 30;
+
+
+		_bulan = months[_zm - 1];
+		_hari = days[zday];
+
+		return hday + " " + _bulan + " " + _zy;
+	}
+};

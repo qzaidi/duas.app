@@ -13,7 +13,8 @@ import { SearchBar } from 'react-native-elements';
 
 import { WebBrowser } from 'expo';
 
-import { MonoText,HijriDate } from '../components/StyledText';
+import { ArabicText } from '../components/StyledText';
+import HijriDate from '../components/Hijri';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -42,7 +43,7 @@ export default class HomeScreen extends React.Component {
               <Text style={styles.getStartedText}>Get started by opening</Text>
 
               <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-                <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
+                <ArabicText>ین الاقوامی خبریں</ArabicText>
               </View>
 
               <Text style={styles.getStartedText}>
@@ -61,7 +62,9 @@ export default class HomeScreen extends React.Component {
  
             <HijriDate/>
             <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-              <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
+              <ArabicText>
+              ین الاقوامی خبریں
+              </ArabicText>
             </View>
           </View>
         </View>
