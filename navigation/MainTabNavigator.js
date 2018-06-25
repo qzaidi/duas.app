@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import PrayerScreen from '../screens/PrayerScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -53,8 +54,23 @@ SettingsStack.navigationOptions = {
   ),
 };
 
+const PrayStack = createStackNavigator({
+  Pray: PrayerScreen,
+});
+
+PrayStack.navigationOptions = {
+  tabBarLabel: 'Prayer',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={'md-timer'}
+    />
+   ),
+};
+
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
+  PrayStack,
   SettingsStack,
 });

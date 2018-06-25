@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { DuaListItem } from './DuaListItem'
-import Menu from '../data';
 
 export class DuaListView extends Component {
 
@@ -13,7 +12,7 @@ export class DuaListView extends Component {
     return (
       <View style={styles.container}>
         <FlatList
-          data={Menu} 
+          {...this.props}
           renderItem={this._renderItem}
        />
       </View>

@@ -33,9 +33,7 @@ export default class HomeScreen extends React.Component {
               />
             </View>
             <SearchBar style={styles.searchContainer}
-              lightTheme
               platform="android"
-              lightTheme
               onChangeText={() => {}}
               placeholder='Type Here...'
             />
