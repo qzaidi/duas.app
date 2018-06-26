@@ -15,8 +15,12 @@ export default class DuaListView extends Component {
 
   executeSql = async (sql, params = []) => {
     return new Promise((resolve, reject) => db.transaction(tx => {
-      tx.executeSql(sql, params, (_, { rows }) => resolve(rows._array), reject)
-    },console.log,console.log))
+      tx.executeSql(sql, params, 
+          (_, { rows }) => resolve(rows._array), reject)
+      },
+      (err) => console.log('error in tx',err) , 
+      () => console.log('tx completed'))
+    )
   }
 
   componentDidMount() {
@@ -24,7 +28,7 @@ export default class DuaListView extends Component {
     this.executeSql('select * from praise limit 10', []).then(items => {
       console.log('resolved with ',items);
       this.setState({items});
-    }, console.log);
+    }, (err) => console.log('executeSql err ', err));
   }
 
 

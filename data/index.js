@@ -30,6 +30,7 @@ const menu = [
     key: 'ziyarat',
     icon: 'icon-ziyarat.png',
     arabic: 'زیارات',
+    screen: 'Collection',
   },
   {
     name: 'Asma-ul-Husna',

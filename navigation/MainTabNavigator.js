@@ -8,6 +8,7 @@ import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import PrayerScreen from '../screens/PrayerScreen';
 import DuaDetailScreen from  '../screens/DuaDetailScreen';
+import CollectionScreen from  '../screens/CollectionScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -30,6 +31,7 @@ HomeStack.navigationOptions = {
 const LinksStack = createStackNavigator({
   Links: LinksScreen,
   Pray: PrayerScreen,
+  Collection: CollectionScreen,
   Detail: DuaDetailScreen,
 });
 
