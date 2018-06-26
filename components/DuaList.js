@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { DuaListItem } from './DuaListItem'
+import { withNavigation } from 'react-navigation';
 
+
+@withNavigation
 export class DuaListView extends Component {
 
   state = {
@@ -26,6 +29,9 @@ export class DuaListView extends Component {
   }
 
   _handlePress = info => {
+    if (info.screen) {
+      this.props.navigation.navigate(info.screen);
+    }
   }
 
 }

@@ -22,6 +22,12 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "packagerOpts": {
+      "assetExts": ["db"]
+    },
+    "assetBundlePatterns": [
+      "assets/db/*"
+    ],
   }
 }

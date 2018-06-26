@@ -5,7 +5,7 @@ import PT from '../data/PrayTimes'
 import { Constants, Location, Permissions } from 'expo';
 
 const   timeNames = {
-  fajr     : { en: 'Fajr', ar:'' },
+  fajr     : { en: 'Fajr', ar:'الفجر صلاة' },
   sunrise  : { en: 'Sunrise', ar: '' },
   dhuhr    : { en: 'Dhuhr', ar: '' },
   asr      : { en: 'Asr', ar: '' },

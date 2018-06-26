@@ -51,6 +51,8 @@ const styles = StyleSheet.create({
   },
   arabic: {
     fontFamily: 'Scheherazade',
+    fontSize: 20,
     textAlign: 'right',
+    letterSpacing: 5,
   },
 });

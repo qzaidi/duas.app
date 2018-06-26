@@ -11,6 +11,7 @@ const menu = [
     key: 'munajat',
     icon: 'icon-munajat.png',
     arabic: 'مناجاة',
+    screen: 'Detail',
   },
   {
     name: 'Supplications',
@@ -41,6 +42,7 @@ const menu = [
     key: 'prayertimes',
     icon: 'icon-praytimes.png',
     arabic: 'اوقات صلاة',
+    screen: 'Pray',
   },
   {
     name: 'Prayers',
@@ -86,4 +88,5 @@ export default menu.map(m =>  ({
     icon: 'https://duas.mobi/img/' + m.icon,
     arabic: m.arabic,
     desc: 'Lorem Ipsum Dolor ..',
+    screen: m.screen,
 }))
