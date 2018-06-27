@@ -25,18 +25,19 @@ export default class CollectionScreen extends React.Component {
   };
 
   componentDidMount() {
-    const query = this.props.navigation.getParam('query', 'select * from toc where type = "munajat"');
-    if (query) {
-      DB.executeSql(query).then(data => {
+    const key = this.props.navigation.getParam('key', "munajat");
+    if (key) {
+      console.log('runnign query for '+key);
+      query = 'select * from toc where type = ?'
+      DB.executeSql(query,[key]).then(data => {
         // transform for FlatListView, then call this.setState
         items = data.map(m => ({
           key: m.urlkey,
           name: m.enname,
-          icon: 'icon-munajat.png',
+          icon: 'https://duas.mobi/img/icon-' + key + '.png',
           arabic: m.arname,
           desc: m.endesc,
         }))
-        console.log(items);
         this.setState({items})
       }, (err) => console.log('executeSql err ', err) )
     }

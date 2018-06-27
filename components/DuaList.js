@@ -30,7 +30,7 @@ export class DuaListView extends Component {
 
   _handlePress = info => {
     if (info.screen) {
-      this.props.navigation.navigate(info.screen);
+      this.props.navigation.navigate(info.screen,info);
     }
   }
 

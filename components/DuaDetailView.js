@@ -26,7 +26,6 @@ export default class DuaListView extends Component {
   componentDidMount() {
     // run the query here, and get the data
     this.executeSql('select * from praise limit 10', []).then(items => {
-      console.log('resolved with ',items);
       this.setState({items});
     }, (err) => console.log('executeSql err ', err));
   }

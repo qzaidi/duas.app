@@ -11,13 +11,14 @@ const menu = [
     key: 'munajat',
     icon: 'icon-munajat.png',
     arabic: 'مناجاة',
-    screen: 'Detail',
+    screen: 'Collection',
   },
   {
     name: 'Supplications',
-    key: 'duas',
+    key: 'dua',
     icon: 'icon-dua.png',
     arabic: 'ادعية',
+    screen: 'Collection',
   },
   {
     name: 'Events',
@@ -50,6 +51,7 @@ const menu = [
     key: 'salat',
     icon: 'icon-munajat.png',
     arabic: 'صلاة',
+    screen: 'Collection',
   },
   {
     name: 'Nahjul Balagha',
@@ -65,9 +67,10 @@ const menu = [
   },
   {
     name: 'Ahadith',
-    key: 'ahadith',
+    key: 'hadith',
     icon: 'icon-ahlebait.png',
     arabic: 'احاديث',
+    screen: 'Collection',
   },
   {
     name: 'Pearls of Wisdom',

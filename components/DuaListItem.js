@@ -45,7 +45,7 @@ export class DuaListItem extends React.Component {
             {arabic}
           </ArabicText>
 
-          <RegularText style={styles.desc}>
+          <RegularText numberOfLines={2}  style={styles.desc}>
             {desc}
           </RegularText>
         </View>
