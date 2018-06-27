@@ -20,8 +20,10 @@ export default class CollectionScreen extends React.Component {
   };
 
 
-  static navigationOptions = {
-    title: 'Collection',
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: `${navigation.state.params.name}`,
+    };
   };
 
   componentDidMount() {
@@ -37,6 +39,7 @@ export default class CollectionScreen extends React.Component {
           icon: 'https://duas.mobi/img/icon-' + key + '.png',
           arabic: m.arname,
           desc: m.endesc,
+          screen: 'Detail',
         }))
         this.setState({items})
       }, (err) => console.log('executeSql err ', err) )
