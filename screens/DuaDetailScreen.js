@@ -6,8 +6,10 @@ import { withNavigation } from 'react-navigation';
 
 @withNavigation
 export default class DetailsScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Dua Simak',
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: `${navigation.state.params.name}`,
+    };
   };
 
   render() {
