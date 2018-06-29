@@ -2,9 +2,10 @@
 const menu = [
   {
     name: 'The Quran',
-    key: 'quran',
+    key: 'offline',
     arabic: 'القرآن الكريم',
     icon: 'icon-quran.png',
+    screen: 'Webview',
   },
   {
     name: 'Whispered Prayers',

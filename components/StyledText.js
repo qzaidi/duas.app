@@ -34,7 +34,7 @@ export class BoldText extends React.Component {
 export class ArabicText extends React.Component {
   render() {
     return (
-      <Text {...this.props} style={[this.props.style, styles.arabic]} />
+      <Text {...this.props} style={[styles.arabic, this.props.style]} />
     );
   }
 }
