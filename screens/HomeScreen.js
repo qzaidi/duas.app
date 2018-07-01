@@ -9,12 +9,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { SearchBar } from 'react-native-elements';
 
 import { WebBrowser } from 'expo';
 
 import { ArabicText } from '../components/StyledText';
 import HijriDate from '../components/Hijri';
+import Autocomplete from '../components/Autocomplete';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -32,11 +32,7 @@ export default class HomeScreen extends React.Component {
                 style={styles.welcomeImage}
               />
             </View>
-            <SearchBar style={styles.searchContainer}
-              platform="android"
-              onChangeText={() => {}}
-              placeholder='Type Here...'
-            />
+            <Autocomplete/>
             <View style={styles.getStartedContainer}>
               <Text style={styles.getStartedText}>Get started by opening</Text>
 

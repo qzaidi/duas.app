@@ -17,6 +17,12 @@ export class DuaListItem extends React.Component {
   render() {
 
     let { icon, name, arabic, desc } = this.props.info;
+    let image;
+    if (typeof icon === 'string') {
+      image = { uri: icon }
+    } else {
+      image = icon
+    }
     return (
       <TouchableNativeFeedback
         delayPressIn={80}
@@ -33,7 +39,7 @@ export class DuaListItem extends React.Component {
             }}>
             <Image
               resizeMode="contain"
-              source={{ uri: icon }}
+              source={image}
               style={styles.logo}
             />
           </FadeIn>

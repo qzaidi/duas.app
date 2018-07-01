@@ -5,12 +5,12 @@ import PT from '../data/PrayTimes'
 import { Constants, Location, Permissions } from 'expo';
 
 const   timeNames = {
-  fajr     : { en: 'Fajr', ar:'الفجر صلاة' },
-  sunrise  : { en: 'Sunrise', ar: '' },
-  dhuhr    : { en: 'Dhuhr', ar: '' },
-  asr      : { en: 'Asr', ar: '' },
-  maghrib  : { en: 'Maghrib', ar: '' },
-  isha     : { en: 'Isha', ar: '' },
+  fajr     : { icon: require('../assets/images/salat/2.png'), en: 'Fajr', ar:'الفجر صلاة' },
+  sunrise  : { icon: require('../assets/images/salat/1.png'), en: 'Sunrise', ar: '' },
+  dhuhr    : { icon: require('../assets/images/salat/2.png'), en: 'Dhuhr', ar: '' },
+  asr      : { icon: require('../assets/images/salat/3.png'), en: 'Asr', ar: '' },
+  maghrib  : { icon: require('../assets/images/salat/4.png'), en: 'Maghrib', ar: '' },
+  isha     : { icon: require('../assets/images/salat/5.png'), en: 'Isha', ar: '' },
 };
 
 function relativeTime(time,now) {
@@ -73,7 +73,7 @@ export default class PrayTimesView extends Component {
       let curtime = new Date()
       let times = PT.getTimes(curtime, [this.state.location.coords.latitude, this.state.location.coords.longitude]);
       data = Object.keys(timeNames).map(function(k,idx) { 
-        return { icon: 'https://duas.mobi/img/salat/'+idx+'.png',  key: k, name: times[k], desc: relativeTime(times[k],curtime), arabic: timeNames[k].en }; 
+        return { icon: timeNames[k].icon,  key: k, name: times[k], desc: relativeTime(times[k],curtime), arabic: timeNames[k].en }; 
       });
     }
 

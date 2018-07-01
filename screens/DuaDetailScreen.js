@@ -12,9 +12,9 @@ export default class DetailsScreen extends React.Component {
     };
   };
 
+
   render() {
     const key = this.props.navigation.getParam('key', "praise");
-    console.log("key is",key);
 
     return (
       <ScrollView style={styles.container}>
