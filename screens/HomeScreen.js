@@ -23,7 +23,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <ImageBackground source={require('../assets/images/cover.png')} resizeMode='cover' style={styles.coverImage}>
+      <ImageBackground source={require('../assets/images/cover.jpg')} resizeMode='cover' style={styles.coverImage}>
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={styles.welcomeContainer}>

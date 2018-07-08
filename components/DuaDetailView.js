@@ -3,9 +3,7 @@ import Expo, { SQLite } from 'expo';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { RegularText, BoldText, ArabicText } from './StyledText';
-
-const db = SQLite.openDatabase('duas.db');
-
+import DB from '../data/DB';
 
 export default class DuaListView extends Component {
 
@@ -13,22 +11,12 @@ export default class DuaListView extends Component {
     items: [],
   }
 
-  executeSql = async (sql, params = []) => {
-    return new Promise((resolve, reject) => db.transaction(tx => {
-      tx.executeSql(sql, params, 
-          (_, { rows }) => resolve(rows._array), reject)
-      },
-      (err) => console.log('error in tx',err) , 
-      () => console.log('tx completed'))
-    )
-  }
-
   componentDidMount() {
     // run the query here, and get the data
     let key = this.props.data;
     let query = 'select * from ' + key;
     console.log('running query ',query);
-    this.executeSql(query).then(items => {
+    DB.executeSql(query).then(items => {
       this.setState({items});
     }, (err) => console.log('executeSql err ', err));
   }

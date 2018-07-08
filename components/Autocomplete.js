@@ -6,53 +6,65 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import { DuaListItem } from './DuaListItem'
 
-const API = 'https://swapi.co/api';
-const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+import DB from '../data/DB';
 
+@withNavigation
 export default class AutocompleteSearch extends Component {
-  static renderDua(film) {
-    const { title, director, opening_crawl, episode_id } = film;
-    const roman = episode_id < ROMAN.length ? ROMAN[episode_id] : episode_id;
-
+  renderDua(item) {
     return (
-      <View>
-        <Text style={styles.titleText}>{roman}. {title}</Text>
-        <Text style={styles.directorText}>({director})</Text>
-        <Text style={styles.openingText}>{opening_crawl}</Text>
-      </View>
-    );
+      <DuaListItem info={item} onPress={() => this._handlePress(item)}/>
+    )
+  }
+
+
+
+  _handlePress = info => {
+    console.log('pressed ',info);
+    if (info.screen) {
+      this.props.navigation.navigate(info.screen,info);
+    }
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      films: [],
+      results: [],
       query: ''
     };
   }
 
-  componentDidMount() {
-    fetch(`${API}/films/`).then(res => res.json()).then((json) => {
-      const { results: films } = json;
-      this.setState({ films });
-    });
-  }
-
-  findFilm(query) {
+  search(query) {
     if (query === '') {
       return [];
     }
 
-    const { films } = this.state;
-    const regex = new RegExp(`${query.trim()}`, 'i');
-    return films.filter(film => film.title.search(regex) >= 0);
+    let sql = 'select * from toc where urlkey like ?'
+    console.log('running query ',query);
+    DB.executeSql(sql,['%'+query+'%']).then(results => {
+      this.setState({results});
+    }, (err) => console.log('executeSql err ', err));
+
+
+   return [{ icon: 'https://duas.mobi/img/icon-dua.png', 
+                    name: 'Ziyarat Warisa', 
+                    key: 'warisa',
+                    arabic: 'أَلْحَمْدُ لل'  ,
+                    screen: 'Detail'
+    }];
   }
 
   render() {
     const { query } = this.state;
-    const films = this.findFilm(query);
-    const comp = (a, b) => a.toLowerCase().trim() === b.toLowerCase().trim();
+    const duas = this.state.results.map(m =>  ({
+      name: m.enname,
+      key: m.key,
+      icon: 'https://duas.mobi/img/' + m.icon,
+      arabic: m.arname,
+      screen: 'Detail'
+    }));
 
     return (
       <View style={styles.container}>
@@ -60,24 +72,24 @@ export default class AutocompleteSearch extends Component {
           autoCapitalize="none"
           autoCorrect={false}
           containerStyle={styles.autocompleteContainer}
-          data={films.length === 1 && comp(query, films[0].title) ? [] : films}
+          data={duas}
           defaultValue={query}
-          onChangeText={text => this.setState({ query: text })}
-          placeholder="Enter Star Wars film title"
-          renderItem={({ title, release_date }) => (
-            <TouchableOpacity onPress={() => this.setState({ query: title })}>
+          onChangeText={text => this.search(text)}
+          placeholder="Search for a dua or ziyarat"
+          renderItem={({ name, arabic }) => (
+            <TouchableOpacity onPress={() => this.setState({ query: name })}>
               <Text style={styles.itemText}>
-                {title} ({release_date.split('-')[0]})
+                {name} ({arabic})
               </Text>
             </TouchableOpacity>
           )}
         />
         <View style={styles.descriptionContainer}>
-          {films.length > 0 ? (
-            AutocompleteSearch.renderDua(films[0])
+          {duas.length > 0 ? (
+            this.renderDua(duas[0])
           ) : (
             <Text style={styles.infoText}>
-              Enter Title of a Star Wars movie
+              Enter your dua/ziyarat name
             </Text>
           )}
         </View>
@@ -90,7 +102,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F5FCFF',
     flex: 1,
-    paddingTop: 25
+    paddingTop: 8,
+    paddingBottom: 8
   },
   autocompleteContainer: {
     marginLeft: 10,

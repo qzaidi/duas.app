@@ -3,6 +3,7 @@ const menu = [
   {
     name: 'The Quran',
     key: 'offline',
+    desc: 'Browse through the Holy Quran, in arabic and with translation.',
     arabic: 'القرآن الكريم',
     icon: 'icon-quran.png',
     screen: 'Webview',
@@ -11,12 +12,14 @@ const menu = [
     name: 'Whispered Prayers',
     key: 'munajat',
     icon: 'icon-munajat.png',
+    desc: 'Munajaat of Imam Ali ibn Husain (as) from Sahifa-e-Sajjdiya, the Psalms of Islam',
     arabic: 'مناجاة',
     screen: 'Collection',
   },
   {
     name: 'Supplications',
     key: 'dua',
+    desc: 'Prayers from the Holy Prophet and his Ahle-bait',
     icon: 'icon-dua.png',
     arabic: 'ادعية',
     screen: 'Collection',
@@ -24,12 +27,14 @@ const menu = [
   {
     name: 'Events',
     key: 'events',
+    desc: 'Calendar of events and special dates',
     icon: 'icon-events.png',
     arabic: 'أيام خاصة',
   },
   {
     name: 'Ziyarat',
     key: 'ziyarat',
+    desc: 'Ziyarats, organized by place and dates',
     icon: 'icon-ziyarat.png',
     arabic: 'زیارات',
     screen: 'Collection',
@@ -37,12 +42,14 @@ const menu = [
   {
     name: 'Asma-ul-Husna',
     key: 'asmaulhusna',
+    desc: 'The beautiful names of Allah',
     icon: 'icon-allah.png',
     arabic: 'اسماء الحسنى',
   },
   {
     name: 'Prayer Times',
     key: 'prayertimes',
+    desc: 'Times for the obligatory prayers for your location',
     icon: 'icon-praytimes.png',
     arabic: 'اوقات صلاة',
     screen: 'Pray',
@@ -50,6 +57,7 @@ const menu = [
   {
     name: 'Prayers',
     key: 'salat',
+    desc: 'Special obligatory and optional prayers',
     icon: 'icon-munajat.png',
     arabic: 'صلاة',
     screen: 'Collection',
@@ -57,18 +65,21 @@ const menu = [
   {
     name: 'Nahjul Balagha',
     key: 'nahjulbalagha',
+    desc: 'A collection of sermons and letters from Imam Ali ibn Abi Talib (as)',
     icon: 'icon-nahj.png',
     arabic: 'نھج البلاغہ',
   },
   {
     name: 'Treatise of Rights',
     key:  'treatise',
+    desc: 'A book from Imam Ali ibn Husain (as) on human rights.',
     icon: 'icon-rights.png',
     arabic: 'رسالة حقوق الامام زين العابدين',
   },
   {
     name: 'Ahadith',
     key: 'hadith',
+    desc: 'Collection of ahadith from Ahle bait',
     icon: 'icon-ahlebait.png',
     arabic: 'احاديث',
     screen: 'Collection',
@@ -76,12 +87,14 @@ const menu = [
   {
     name: 'Pearls of Wisdom',
     key: 'teachings',
+    desc: 'Short stories from the Ahlebait',
     icon: 'icon-tesbih.png',
     arabic: 'قصص اطفال',
   },
   {
     name: 'Gallery',
     key: 'slides',
+    desc: 'Images and Videos',
     icon: 'icon-video.png',
     arabic: 'تصاویر',
   }
@@ -92,6 +105,6 @@ export default menu.map(m =>  ({
     key: m.key,
     icon: 'https://duas.mobi/img/' + m.icon,
     arabic: m.arabic,
-    desc: 'Lorem Ipsum Dolor ..',
+    desc: m.desc,
     screen: m.screen,
 }))
