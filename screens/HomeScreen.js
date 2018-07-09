@@ -10,11 +10,10 @@ import {
   View,
 } from 'react-native';
 
-import { WebBrowser } from 'expo';
-
 import { ArabicText } from '../components/StyledText';
 import HijriDate from '../components/Hijri';
 import Autocomplete from '../components/Autocomplete';
+import Background from '../components/Background';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -23,7 +22,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <ImageBackground source={require('../assets/images/cover.jpg')} resizeMode='cover' style={styles.coverImage}>
+      <Background>
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={styles.welcomeContainer}>
@@ -62,42 +61,9 @@ export default class HomeScreen extends React.Component {
             </View>
           </View>
         </View>
-        </ImageBackground>
+        </Background>
       );
   }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({
@@ -119,11 +85,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 10,
-  },
-  coverImage: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
   },
   welcomeImage: {
     width: 100,

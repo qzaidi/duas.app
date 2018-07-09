@@ -25,6 +25,8 @@ export default class AutocompleteSearch extends Component {
     console.log('pressed ',info);
     if (info.screen) {
       this.props.navigation.navigate(info.screen,info);
+      // clear dropdowns etc
+      this.setState({query: '', results: []});
     }
   }
 
@@ -47,24 +49,17 @@ export default class AutocompleteSearch extends Component {
       this.setState({results});
     }, (err) => console.log('executeSql err ', err));
 
-
-   return [{ icon: 'https://duas.mobi/img/icon-dua.png', 
-                    name: 'Ziyarat Warisa', 
-                    key: 'warisa',
-                    arabic: 'أَلْحَمْدُ لل'  ,
-                    screen: 'Detail'
-    }];
   }
 
   render() {
     const { query } = this.state;
     const duas = this.state.results.map(m =>  ({
       name: m.enname,
-      key: m.key,
-      icon: 'https://duas.mobi/img/' + m.icon,
+      key: m.urlkey,
+      icon: 'https://duas.mobi/img/icon-' + m.type + '.png',
       arabic: m.arname,
       screen: 'Detail'
-    }));
+    })).slice(0,3);
 
     return (
       <View style={styles.container}>
@@ -76,10 +71,10 @@ export default class AutocompleteSearch extends Component {
           defaultValue={query}
           onChangeText={text => this.search(text)}
           placeholder="Search for a dua or ziyarat"
-          renderItem={({ name, arabic }) => (
-            <TouchableOpacity onPress={() => this.setState({ query: name })}>
+          renderItem={(item) => (
+            <TouchableOpacity onPress={() => this._handlePress(item)}>
               <Text style={styles.itemText}>
-                {name} ({arabic})
+                {item.name} ({item.arabic})
               </Text>
             </TouchableOpacity>
           )}
