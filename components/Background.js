@@ -9,13 +9,22 @@ export default class Background extends Component {
  constructor(props) {
     super(props);
     this.state = {
-      cover: '',
+      cover: [
+        require('../assets/images/covers/sunrise.jpg'),
+        require('../assets/images/covers/evening.jpg'),
+        require('../assets/images/covers/night.jpg'),
+      ],
+      selected: 0,
     };
+  }
+
+  componentWillMount() {
+
   }
 
   render() {
     return (
-      <ImageBackground source={require('../assets/images/cover.jpg')} resizeMode='cover' style={styles.coverImage}>
+      <ImageBackground source={this.state.cover[this.state.selected]} resizeMode='cover' style={styles.coverImage}>
         {this.props.children}
       </ImageBackground>
     )

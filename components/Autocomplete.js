@@ -80,13 +80,9 @@ export default class AutocompleteSearch extends Component {
           )}
         />
         <View style={styles.descriptionContainer}>
-          {duas.length > 0 ? (
+          {duas.length > 0 &&
             this.renderDua(duas[0])
-          ) : (
-            <Text style={styles.infoText}>
-              Enter your dua/ziyarat name
-            </Text>
-          )}
+          }
         </View>
       </View>
     );
