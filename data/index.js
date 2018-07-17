@@ -30,6 +30,7 @@ const menu = [
     desc: 'Calendar of events and special dates',
     icon: 'icon-events.png',
     arabic: 'أيام خاصة',
+    screen: 'Events',
   },
   {
     name: 'Ziyarat',
@@ -68,6 +69,7 @@ const menu = [
     desc: 'A collection of sermons and letters from Imam Ali ibn Abi Talib (as)',
     icon: 'icon-nahj.png',
     arabic: 'نھج البلاغہ',
+    screen: 'Sermons',
   },
   {
     name: 'Treatise of Rights',

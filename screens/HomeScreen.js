@@ -33,26 +33,12 @@ export default class HomeScreen extends React.Component {
             </View>
             <Autocomplete/>
             <View style={styles.getStartedContainer}>
-              <Text style={styles.getStartedText}>Get started by opening</Text>
-
-              <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-                <ArabicText>ین الاقوامی خبریں</ArabicText>
-              </View>
-
               <Text style={styles.getStartedText}>
                 Welcome to Duas.mobi app
               </Text>
             </View>
-
-            <View style={styles.helpContainer}>
-              <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-                <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-              </TouchableOpacity>
-            </View>
-        </ScrollView>
-
+          </ScrollView>
           <View style={styles.tabBarInfoContainer}>
- 
             <HijriDate/>
             <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
               <ArabicText>
@@ -61,8 +47,8 @@ export default class HomeScreen extends React.Component {
             </View>
           </View>
         </View>
-        </Background>
-      );
+      </Background>
+    );
   }
 }
 
