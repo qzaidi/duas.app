@@ -61,12 +61,12 @@ export default class PrayTimesView extends Component {
         errorMessage: 'Permission to location was denied',
       })
     }
-    let location = await Location.getCurrentPositionAsync({})
+    let location = await Location.getCurrentPositionAsync({enableHighAccuracy: false, maximumAge: 3600000})
     this.setState({ location })
   };
 
   render() {
-    let data = [ { name: 'Loading ...', key: 'loading' } ];
+    let data = [ { name: 'Fetching Location ..', key: 'loading' } ];
 
     if (this.state.errorMessage) {
     } else if (this.state.location) {

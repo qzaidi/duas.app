@@ -14,12 +14,17 @@ export default class Background extends Component {
         require('../assets/images/covers/evening.jpg'),
         require('../assets/images/covers/night.jpg'),
       ],
-      selected: 0,
+      selected: 2,
     };
   }
 
   componentWillMount() {
-
+    const now = new Date().getHours();
+    if (now > 9 && now < 17) {
+      this.state.selected=0;
+    } else if (now > 17 && now < 20) {
+      this.state.selected=1;
+    }
   }
 
   render() {

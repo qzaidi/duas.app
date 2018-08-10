@@ -50,7 +50,6 @@ export default class CollectionScreen extends React.Component {
          break;
       }
    }
-   console.log('starting with',i,rows[i])
    return rows.slice(i).concat(rows.slice(0,i))  
   }
 

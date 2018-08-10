@@ -27,22 +27,19 @@ export default class SermonsScreen extends React.Component {
   };
 
   componentDidMount() {
-    const key = this.props.navigation.getParam('key', "sermon");
-    if (key) {
-      query = 'select * from toc where type = ? and collection = ?'
-      DB.executeSql(query,[key, 'Nahjul Balagha']).then(data => {
-        // transform for FlatListView, then call this.setState
-        items = data.map(m => ({
-          key: m.urlkey,
-          name: m.enname,
-          icon: 'https://duas.mobi/img/icon-' + key + '.png',
-          arabic: m.arname,
-          desc: m.endesc,
-          screen: 'Detail',
-        }))
-        this.setState({items})
-      }, (err) => console.log('executeSql err ', err) )
-    }
+    query = 'select * from toc where type = "sermon" and collection = "Nahjul Balagha"'
+    DB.executeSql(query).then(data => {
+      items = data.map(m => ({
+        key: m.urlkey,
+        name: m.enname,
+        icon: 'https://duas.mobi/img/icon-sermon.png',
+        arabic: m.arname,
+        desc: m.endesc,
+        screen: 'Detail',
+      }))
+      this.setState({items})
+   }, (err) => console.log('executeSql err ', err) )
+    
   }
 
   render() {

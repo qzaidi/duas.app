@@ -41,13 +41,6 @@ const menu = [
     screen: 'Collection',
   },
   {
-    name: 'Asma-ul-Husna',
-    key: 'asmaulhusna',
-    desc: 'The beautiful names of Allah',
-    icon: 'icon-allah.png',
-    arabic: 'اسماء الحسنى',
-  },
-  {
     name: 'Prayer Times',
     key: 'prayertimes',
     desc: 'Times for the obligatory prayers for your location',
@@ -86,6 +79,7 @@ const menu = [
     arabic: 'احاديث',
     screen: 'Collection',
   },
+  /*
   {
     name: 'Pearls of Wisdom',
     key: 'teachings',
@@ -99,7 +93,16 @@ const menu = [
     desc: 'Images and Videos',
     icon: 'icon-video.png',
     arabic: 'تصاویر',
-  }
+  },
+  {
+    name: 'Asma-ul-Husna',
+    key: 'asmaulhusna',
+    desc: 'The beautiful names of Allah',
+    icon: 'icon-allah.png',
+    arabic: 'اسماء الحسنى',
+  },
+  */
+
 ];
 
 export default menu.map(m =>  ({
