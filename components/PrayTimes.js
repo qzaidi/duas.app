@@ -3,6 +3,9 @@ import { Platform, FlatList, StyleSheet, Text, View } from 'react-native';
 import { DuaListItem } from './DuaListItem'
 import PT from '../data/PrayTimes'
 import { Constants, Location, Permissions } from 'expo';
+import { withNavigation } from 'react-navigation';
+
+
 
 const   timeNames = {
   fajr     : { icon: require('../assets/images/salat/2.png'), en: 'Fajr', ar:'الفجر صلاة' },
@@ -37,6 +40,7 @@ function relativeTime(time,now) {
   return '';
 }
 
+@withNavigation
 export default class PrayTimesView extends Component {
   state = {
     location: null,
@@ -73,7 +77,14 @@ export default class PrayTimesView extends Component {
       let curtime = new Date()
       let times = PT.getTimes(curtime, [this.state.location.coords.latitude, this.state.location.coords.longitude]);
       data = Object.keys(timeNames).map(function(k,idx) { 
-        return { icon: timeNames[k].icon,  key: k, name: times[k], desc: relativeTime(times[k],curtime), arabic: timeNames[k].en }; 
+        return { 
+                 icon: timeNames[k].icon,  
+                 key: k, 
+                 name: times[k], 
+                 desc: relativeTime(times[k],curtime), 
+                 arabic: timeNames[k].en,
+                 screen: 'CollectionMap',
+               }; 
       });
     }
 
@@ -94,8 +105,11 @@ export default class PrayTimesView extends Component {
   }
 
   _handlePress = info => {
+    console.log('pressed ',info);
+    if (info.screen) {
+      this.props.navigation.navigate(info.screen,info);
+    }
   }
-
 }
 
 const styles = StyleSheet.create({

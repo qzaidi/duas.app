@@ -44,7 +44,6 @@ export default class AutocompleteSearch extends Component {
     }
 
     let sql = 'select * from toc where urlkey like ?'
-    console.log('running query ',query);
     DB.executeSql(sql,['%'+query+'%']).then(results => {
       this.setState({results});
     }, (err) => console.log('executeSql err ', err));

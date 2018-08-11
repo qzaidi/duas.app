@@ -15,7 +15,6 @@ export default class DuaListView extends Component {
     // run the query here, and get the data
     let key = this.props.data;
     let query = 'select * from ' + key;
-    console.log('running query ',query);
     DB.executeSql(query).then(items => {
       this.setState({items});
     }, (err) => console.log('executeSql err ', err));

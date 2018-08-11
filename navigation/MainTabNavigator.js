@@ -9,6 +9,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import PrayerScreen from '../screens/PrayerScreen';
 import DuaDetailScreen from  '../screens/DuaDetailScreen';
 import CollectionScreen from  '../screens/CollectionScreen';
+import CollectionMapScreen from  '../screens/CollectionMapScreen';
 import WebviewScreen from '../screens/WebviewScreen';
 import EventsScreen from '../screens/EventsScreen';
 import SermonsScreen from '../screens/SermonsScreen';
@@ -35,6 +36,7 @@ const LinksStack = createStackNavigator({
   Links: LinksScreen,
   Pray: PrayerScreen,
   Collection: CollectionScreen,
+  CollectionMap: CollectionMapScreen,
   Detail: DuaDetailScreen,
   Webview: WebviewScreen,
   Events: EventsScreen,
