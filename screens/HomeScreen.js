@@ -25,12 +25,10 @@ export default class HomeScreen extends React.Component {
       <Background>
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <View style={styles.welcomeContainer}>
               <Image
                 source={require('../assets/images/logo.png')}
                 style={styles.welcomeImage}
               />
-            </View>
             <Autocomplete/>
             <View style={styles.getStartedContainer}>
               <Text style={styles.getStartedText}>
@@ -72,17 +70,9 @@ const styles = StyleSheet.create({
   homeScreenFilename: {
     marginVertical: 7,
   },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
   getStartedText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+    color: 'rgba(255,255,255, 1)',
     lineHeight: 24,
     textAlign: 'center',
   },

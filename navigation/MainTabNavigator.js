@@ -12,6 +12,7 @@ import CollectionScreen from  '../screens/CollectionScreen';
 import CollectionMapScreen from  '../screens/CollectionMapScreen';
 import WebviewScreen from '../screens/WebviewScreen';
 import EventsScreen from '../screens/EventsScreen';
+import EventDetailScreen from  '../screens/EventDetailScreen';
 import SermonsScreen from '../screens/SermonsScreen';
 
 const HomeStack = createStackNavigator({
@@ -41,6 +42,7 @@ const LinksStack = createStackNavigator({
   Webview: WebviewScreen,
   Events: EventsScreen,
   Sermons: SermonsScreen,
+  EventDetail: EventDetailScreen,
 });
 
 LinksStack.navigationOptions = {

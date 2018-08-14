@@ -66,6 +66,7 @@ export default class AutocompleteSearch extends Component {
           autoCapitalize="none"
           autoCorrect={false}
           containerStyle={styles.autocompleteContainer}
+          inputContainerStyle={styles.inputContainerStyle}
           data={duas}
           defaultValue={query}
           onChangeText={text => this.search(text)}
@@ -93,11 +94,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     flex: 1,
     paddingTop: 8,
-    paddingBottom: 8
+    paddingBottom: 0
   },
   autocompleteContainer: {
     marginLeft: 10,
     marginRight: 10
+  },
+  inputContainerStyle: {
+    borderWidth: 0,
+    borderRadius: 0,
+    margin: 0,
   },
   itemText: {
     fontSize: 15,

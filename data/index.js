@@ -65,13 +65,6 @@ const menu = [
     screen: 'Sermons',
   },
   {
-    name: 'Treatise of Rights',
-    key:  'treatise',
-    desc: 'A book from Imam Ali ibn Husain (as) on human rights.',
-    icon: 'icon-rights.png',
-    arabic: 'رسالة حقوق الامام زين العابدين',
-  },
-  {
     name: 'Ahadith',
     key: 'hadith',
     desc: 'Collection of ahadith from Ahle bait',
@@ -80,6 +73,13 @@ const menu = [
     screen: 'Collection',
   },
   /*
+  {
+    name: 'Treatise of Rights',
+    key:  'treatise',
+    desc: 'A book from Imam Ali ibn Husain (as) on human rights.',
+    icon: 'icon-rights.png',
+    arabic: 'رسالة حقوق الامام زين العابدين',
+  },
   {
     name: 'Pearls of Wisdom',
     key: 'teachings',

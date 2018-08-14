@@ -54,7 +54,7 @@ export default class CollectionScreen extends React.Component {
   }
 
   componentDidMount() {
-    query = 'select urlkey,name,hijridate, hijrimonth,image from events order by hijrimonth,hijridate'
+    query = 'select urlkey,name,hijridate, description, hijrimonth,image from events order by hijrimonth,hijridate'
     DB.executeSql(query).then(data => {
       const hdate = getHijriDate()
       items = this.sortEvents(hdate,data);
@@ -62,9 +62,11 @@ export default class CollectionScreen extends React.Component {
           key: m.urlkey,
           name: m.name,
           arabic: m.hijridate + getHijriMonth(m.hijrimonth),
+          image: m.image,
           icon: 'https://duas.mobi/cache/64x64/' + m.image,
           desc: formatDate(getGregorianDate({day: m.hijridate, month: m.hijrimonth-1, year: m.hijrimonth>=hdate.month?hdate.year:hdate.year+1})),
-
+          description: m.description,
+          screen: 'EventDetail',
       }))
       this.setState({items})
     }, (err) => console.log('executeSql err ', err) )
@@ -73,8 +75,6 @@ export default class CollectionScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
         <DuaListView data={this.state.items}/>
       </ScrollView>
     );
