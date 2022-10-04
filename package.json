@@ -10,7 +10,7 @@
   "dependencies": {
     "@expo/react-native-touchable-native-feedback-safe": "^1.1.2",
     "@expo/samples": "2.1.1",
-    "expo": "^28.0.0",
+    "expo": "^46.0.14",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-28.0.0.tar.gz",
     "react-native-autocomplete-input": "^3.5.0",
